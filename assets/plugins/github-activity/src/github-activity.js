@@ -200,6 +200,7 @@ var GitHubActivity = (function() {
 
   obj.feed = function(options) {
     if (!options.username || !options.selector) {
+      throw "You must specify the username and selector options for the activity stream.";
       return false;
     }
 
@@ -208,6 +209,10 @@ var GitHubActivity = (function() {
         eventsUrl = userUrl + '/events',
         output,
         div;
+
+    if (!!options.repository){
+      eventsUrl = 'https://api.github.com/repos/' + options.username + '/' + options.repository + '/events';
+    }
 
     if (options.clientId && options.clientSecret) {
       var authString = '?client_id=' + options.clientId + '&client_secret=' + options.clientSecret;
