@@ -78,7 +78,7 @@
     <div class="header">
         <div class="container"> 
             <div class="row">
-                <div class="col-sm-12 col-md-12">
+                <div class="col-sm-10 col-md-10">
                     <img class="profile-image img-responsive img-circle pull-left" width="200px" height="200px" src="docs/ias/ias_system_logo.JPG" alt="Sergio Morales" />
                     <div class="profile-content pull-left">
                         <h1 class="name">The Integrated Appliance System</h1>  
@@ -91,6 +91,18 @@
                     <!-- BUTTON <a class="btn btn-cta-primary pull-right" href="http://themes.3rdwavemedia.com/" target="_blank"><i class="fa fa-paper-plane"></i> Contact Me</a> -->        
                 </div><!--//col-->
 
+                <div class="col-sm-2 col-md-2">
+                    <div class="panel panel-success">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li role="presentation"><a href="#Introduction">Introduction</a></li>
+                            <li role="presentation"><a href="#Motivation">Motivation</a></li>
+                            <li role="presentation"><a href="#Design">Design</a></li>
+                            <li role="presentation"><a href="#Results">Results</a></li>
+                            <li role="presentation"><a href="#Future">Future Improvements</a></li>
+                        </ul>
+                    </div>
+
+                </div>
                 
             </div><!--//row-->
             
@@ -101,20 +113,116 @@
     <div class="container sections-wrapper">
         <div class="row">
             <div class="primary col-md-12 col-sm-12 col-xs-12">
+                
+                
                 <section class="about section">
                     <div class="section-inner">
+                        <a name="Introduction"></a>
                         <a name="061715"></a> <!-- Blog tag MMDDYY -->
                         <h2 class="heading text-center"> Implementing a Control System for a Chemical &amp; Environmental Engineering Capstone Project</h2>
-                        <h5 class="text-right"> Wednesday, June 17, 2015</h5>
+                        <h5 class="text-right"> Last updated: June 24, 2015</h5>
+                        <div class="content text-center">
+                            <center>
+                                <img class="img-responsive" src="assets/images/ias/smi.jpg" />
+                                <h5 class="text-center"> The IAS 2013-2015 team. From left to right: Patrick Tan, Julie Nguyen, Ana Tatyanich, Julianne Rolfe, and yours truly. </h5>
+                                <p> The Integrated Appliance System is a Senior Design, or capstone project for the Department of Chemical &amp; Environmental Engineering for UC Riverside, under the advisory of Dr. Kawai Tam. We aim to draft, design, and potentially market an energy combination of appliances that cut your electricity bill substantially. It's common knowledge that appliances such as washers and dryers in typical residential homes are among the highest in terms of energy consumption. We're an interdisciplinary team that consists of Chemical, Environmental, Mechanical, and Computer Engineering majors. In a nut shell, the design utilizes solar thermal energy to heat up clothes, and taking the surplus energy to be routed into a water heater or into a home as warm air for heating, thus replacing a clothes dryer, water heater, and space heater. Being pretty savvy in embedded systems, I was reached out to implement a control system for the appliances. </p>
+                            </center>
+                            
+                        </div>
+                    </div>
+                </section>
+                
+                
+                <section class="about section">
+                    <div class="section-inner">
+                        <a name="Motivation"></a>
+                        <h5 class="text-right"> <a href="#Top">Top </a> </h5>
+                        <h2 class="heading text-center"> Why IAS?</h2>
                         <div class="content">
                             <center>
-                                <p>More details to be added soon, stay tuned! Meanwhile, check out the documentation:</p>
+                                <img class="img-responsive" src="assets/images/ias/process_diagram.png" />
+                                <h5> The general flow for what the control system of the IAS consists of. </h5>
+                                
+                                <p> Working in such an interdisciplinary team has been great. My main motivation behind working in such a project was the real pratical experience I've gotten from it. Coming up a design, explaining it to other engineers from other fields, and brainstorming ways on optimizing or totally redrafting components is something you can't learn in a classroom. Plus, we've proven just how many people's interests have been peaked by introducing such a sustainable project.</p>
+                                
+                                <p> All in all, the IAS is different from just hanging up your laundry on a clothesline. We're able to come up with wrinkle-free, faster, and more affordable was of drying your clothes, aside from also heating up air and water, which is a great plus as well. From looking at the diagram, the use of microcontrollers allow to add on so much more to the system, such as wireless actuation of the appliances through Bluetooth, which will be discussed later.</p>
+                            </center>
+                        </div>
+                    </div>
+                </section>
+                
+
+                <section class="about section">
+                    <div class="section-inner">
+                        <a name="Design"></a>
+                        <h5 class="text-right"> <a href="#Top">Top </a> </h5>
+                        <h2 class="heading text-center"> Implementation of the System</h2>
+                        <div class="content">
+                            <center>
+                                <img class="img-responsive" src="assets/images/ias/prototype_angle.JPG" /> 
+                                <h5> The breadboard prototype, complete with fan, bluetooth application, and all sensors. </h5>
+                                
+                                <p>
+                                    In order to be able to actuate the appliances, I had to find the best way of regulating the fans that were used throughout the design. This is because we utilize inline fans to draw in air into the "clothes dryer" from the heated up air that comes out of the solar collector. I decided on using transistors, since we could later be able to control the speed of the fan with pulse-width modulation, and thus implement a feedback control loop to regulate the appliances to be at a constant temperature and humidity.
+                                </p>
+
+                                <img class="img-responsive" src="assets/images/ias/prototype_zoom.PNG" />
+                                <h5> Another angle of the prototype. </h5>
+                                
+                                <p> For implementation of the logic, interface, and for low-power consumption, I went with microcontrollers. Being used to Atmel, I went with some ATmega1284 8-bit microcontrollers. I ended up using two, one for the user interface, the other to work out the controls and the bluetooth module. Most of the logic involves receiving and interpretation of the data given by the sensors. Moreover, the reason I'm using sensors are simple: for one, you need to have a way to keep track of the dryer's temperature and humidity; secondly, you need to monitor safety precautions. 
+                                </p>
+                                
+                                <p> This is why I went ahead and picked up some motion sensors, temperature and humidity sensors, as well as waterproof temperature probes to measure the water tank's temperature as well. Note the Android tablet on the right side of the last picture, which is what I'm using to work out a prototype Bluetooth app interface to provide energy savings reports to the user.</p>
+                            </center>
+                        </div>
+                    </div>
+                </section>
+                
+  
+                <section class="about section">
+                    <div class="section-inner">
+                        <a name="Results"></a>
+                        <h5 class="text-right"> <a href="#Top">Top </a> </h5>
+                        <h2 class="heading text-center"> The Results of Trial, Error, and More Error</h2>
+                        <div class="content">
+                            <center>
+                                <img class="img-responsive" src="assets/images/ias/prototype_bt.JPG" />
+                                
+                                <p>
+                                    In the end, I was able to come up with a prototype that successfully monitored temperature, humidity, and motion. And although I didn't get the chance to hook it up to the Closet Dryer (the shape of the closet dryer resembles a closet), I was able to demonstrate that it could successfully actuate the fans (in my case, I had 12V fans accessible to me so I utilized the transistors to power them on). All that was missing was the basic logic to implement the automation, or the feedback loop to regulate a constant temperature. This wasn't done because the prototype wasn't actually mounted on yet, so I couldn't progress any further until our contractors finished up the physical dryer prototype. I was even able to get the system to wirelessly actuate the fans via the Bluetooth app, by interpreting the signals on my tablet via the Bluetooth app on the breadboard prototype.
+                                </p>
+                            </center>
+                            
+                        </div>
+                    </div>
+                </section>
+                
+                
+                <section class="about section">
+                    <div class="section-inner">
+                        <a name="Future"></a>
+                        <h5 class="text-right"> <a href="#Top">Top </a> </h5>
+                        <h2 class="heading text-center"> What's Next for IAS</h2>
+                        <div class="content">
+                            <center>
+                                <img class="img-responsive" src="assets/images/ias/board_top.png" />
+                                <p>
+                                    Although the school year came to an end, meaning the project was officialy over, I'm still not satisfied with my part. One thing I've started doing towards the last week of our final year as an undergaduate was to come up with at least a mock-up or first draft of a printed circuit board. Since marketing something such as the IAS would need scalability in manufacturing, breadboards would not cut it. I learned Eagle CAD for this sole purpose- being able to produce a finished product for the controls of the IAS. This way, I'd be able to physically mount and install the controls on the Closet Dryer and give it a go. Also, another improvement I'd like to work on would be the Bluetooth interface. I took a shortcut with the app itself, using a random Bluetooth terminal app on the Play Store, which again, doesn't cut it. I've been in the process of getting used to the new Android SDK (Android Studio), in order to make a real "IAS App".
+                                </p>
+                                
+                                <br>
+                                <p>
+                                    As I continue to progress on this project, this page will be updated as well. Meanwhile, check out the full documentation on my part of this project here (poster board presentation will soon be uploaded as well):</p>
                                 <p><a class="more-link" href="./docs/ias/IAS_System_Final_Project_Report.pdf" target="_blank"><i class="fa fa-external-link"></i>View project report</a></p>
                                 <p><a class="more-link" href="./docs/ias/IAS_System_Design_Plan_Schematic.pdf" target="_blank"><i class="fa fa-external-link"></i>View schematic details</a></p>
                             </center>
 
                         </div>
-                        
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <div class="section-inner">
                         <!-- for multiple comments, http://stackoverflow.com/questions/4963505/several-disqus-threads-on-one-page -->
                         <div id="disqus_thread"></div>
                         <script type="text/javascript">
